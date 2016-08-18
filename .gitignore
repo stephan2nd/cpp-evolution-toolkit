@@ -4,3 +4,9 @@
 *.o
 
 *.app
+
+lib/*
+!lib/README
+
+obj/*
+!obj/README
