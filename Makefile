@@ -1,6 +1,5 @@
 # Makefile for evolution-toolkit
 
-
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
  CC := g++
@@ -21,7 +20,7 @@ CC_FLAGS  := -Wall -pedantic -O3 -std=c++11 # -g (for debugging)
 MAIN_OBJ := obj/main.o
 TEST_OBJ := obj/test.o
 
-LIB_NAME := lib/evolution-toolkit.a
+LIB_NAME := lib/libevotools.a
 
 all: lib main
 	@echo "done"
