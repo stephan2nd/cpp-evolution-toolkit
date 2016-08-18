@@ -1,6 +1,6 @@
 # Makefile for evolution-toolkit
 
-CC := llvm-g++
+CC := g++ #llvm-g++
 LL := llvm-ar-mp-3.7
 CPP_FILES := $(wildcard src/*.cpp)
 CPP_FILES := $(filter-out src/main.cpp, $(CPP_FILES))
