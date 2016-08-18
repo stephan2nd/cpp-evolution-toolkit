@@ -143,19 +143,19 @@ Genome::crossover(const Genome& other, EvolutionParameters ep, default_random_en
 	Genome child;
 	child.m_sigma_mutation = m_sigma_mutation;
 
-    uniform_int_distribution<int> dist(ep.n_min_genes_till_cross, ep.n_max_genes_till_cross);
+	uniform_int_distribution<int> dist(ep.n_min_genes_till_cross, ep.n_max_genes_till_cross);
 	
 	int nof_genes_till_cross = dist(rnd);
-    const Genome* active_genome = this;
+	const Genome* active_genome = this;
 
-    for( int i=0; i<m_genes.size(); i++){
+	for( unsigned int i=0; i<m_genes.size(); i++){
 		child.m_genes.push_back(active_genome->m_genes.at(i));
-        if( nof_genes_till_cross > 0 ){
+		if( nof_genes_till_cross > 0 ){
 			nof_genes_till_cross -= 1;
 		} else {
 			nof_genes_till_cross = dist(rnd);
-            if( active_genome == this ) { active_genome = &other; } 
-            else						{ active_genome = this;   }
+			if( active_genome == this ) { active_genome = &other; } 
+		 	else						{ active_genome = this;   }
 		}
 	}
 
@@ -167,21 +167,21 @@ Genome::crossover(const Genome& other, EvolutionParameters ep, default_random_en
 Genome
 Genome::non_homologous_crossover(const Genome& other, EvolutionParameters ep, default_random_engine& rnd) const
 {
-    uniform_int_distribution<int> dist_length(1, m_genes.size()/2);
-    int length = dist_length(rnd);
+	uniform_int_distribution<int> dist_length(1, m_genes.size()/2);
+	unsigned int length = dist_length(rnd);
     
-    uniform_int_distribution<int> dist_start_index(0, m_genes.size()-1-length);
-	int start_index = dist_start_index(rnd);
+	uniform_int_distribution<int> dist_start_index(0, m_genes.size()-1-length);
+	unsigned int start_index = dist_start_index(rnd);
     
-    uniform_int_distribution<int> dist_new_start(0, m_genes.size()-1);
-	int new_start = dist_new_start(rnd);
+	uniform_int_distribution<int> dist_new_start(0, m_genes.size()-1);
+	unsigned int new_start = dist_new_start(rnd);
 	
 	Genome child;
 	child.m_sigma_mutation = m_sigma_mutation;
 	
 	bool shifting = false;
 
-    for( int i=0; i<m_genes.size(); i++){
+	for( unsigned int i=0; i<m_genes.size(); i++){
 		
 		if( i == new_start ){
 			shifting = true;

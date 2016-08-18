@@ -1,7 +1,7 @@
 #include "Population.hpp"
 
 #include <sstream>
-
+#include <algorithm>
 
 
 Population::Population():
@@ -99,7 +99,7 @@ Population::createOffspring(double (*fitness_function)(const vector<double>& gen
 		normal_distribution<double> rdist(0, ep.sigma_survive * m_genomes.size());
 		while( offspring.m_genomes.size() < m_genomes.size() ){
 	
-			int mother_index = floor(abs(rdist(rnd)));
+			unsigned int mother_index = floor(abs(rdist(rnd)));
 			while( mother_index >= m_genomes.size() ){
 				mother_index = floor(abs(rdist(rnd)));
 			}
@@ -115,12 +115,12 @@ Population::createOffspring(double (*fitness_function)(const vector<double>& gen
 
 		while( offspring.m_genomes.size() < m_genomes.size() ){
 	
-			int mother_index = floor(abs(rdist(rnd)));
+			unsigned int mother_index = floor(abs(rdist(rnd)));
 			while( mother_index >= m_genomes.size() ){
 				mother_index = floor(abs(rdist(rnd)));
 			}
 	
-			int father_index = floor(abs(rdist(rnd)));
+			unsigned int father_index = floor(abs(rdist(rnd)));
 			while( father_index >= m_genomes.size() ){
 				father_index = floor(abs(rdist(rnd)));
 			}		
