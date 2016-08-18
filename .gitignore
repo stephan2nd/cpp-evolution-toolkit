@@ -10,3 +10,5 @@ lib/*
 
 obj/*
 !obj/README
+
+main
