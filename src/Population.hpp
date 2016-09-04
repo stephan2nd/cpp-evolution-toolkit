@@ -37,7 +37,9 @@ public:
 
 	void evaluate(double (*fitness_function)(const vector<double>& genes));
 	
-	Population createOffspring(double (*fitness_function)(const vector<double>& genes), const EvolutionParameters& ep, default_random_engine& rnd);
+	Population createOffspring(const EvolutionParameters& ep, default_random_engine& rnd);
+
+	Population evaluateAndCreateOffspring(double (*fitness_function)(const vector<double>& genes), const EvolutionParameters& ep, default_random_engine& rnd);
 
 	double fitness(void) const;
 	

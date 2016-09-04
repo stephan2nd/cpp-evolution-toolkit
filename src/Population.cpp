@@ -85,11 +85,9 @@ Population::evaluate(double (*fitness_function)(const vector<double>& genes))
 
 
 Population 
-Population::createOffspring(double (*fitness_function)(const vector<double>& genes), const EvolutionParameters& ep, default_random_engine& rnd)
+Population::createOffspring(const EvolutionParameters& ep, default_random_engine& rnd)
 {
 	Population offspring;
-	
-	evaluate(fitness_function);
 	
 	for( int i=0; i<ep.n_keep; i++ ){
 		offspring.addGenome(m_genomes.at(i));
@@ -139,6 +137,15 @@ Population::createOffspring(double (*fitness_function)(const vector<double>& gen
 		}	
 		return offspring;
 	}
+}
+
+
+
+Population
+Population::evaluateAndCreateOffspring(double (*fitness_function)(const vector<double>& genes), const EvolutionParameters& ep, default_random_engine& rnd)
+{
+	evaluate(fitness_function);
+	return createOffspring(ep, rnd);
 }
 
 

@@ -59,7 +59,7 @@ int main(int argc , char *argv[])
     
     for( int i=0; i<number_of_generations; i++ ) {
     
-		p = p.createOffspring(fitness_2_max, ep, rnd);
+	p = p.evaluateAndCreateOffspring(fitness_2_max, ep, rnd);
     	p.evaluate(fitness_2_max);
 	    cout << "Generation " << i << ":\t" << p.toLine() << endl;     
     }
