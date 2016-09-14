@@ -7,7 +7,7 @@
 Genome::Genome(void):
 	m_genes(0),
 	m_fitness(0),
-	m_sigma_mutation(0.05)
+	m_sigma_mutation(1)
 { }
 
 
@@ -24,7 +24,7 @@ Genome::Genome(const Genome& genome):
 Genome::Genome(unsigned int number_of_genes, default_random_engine& rnd):
 	m_genes(number_of_genes),
 	m_fitness(0),
-	m_sigma_mutation(0.05)
+	m_sigma_mutation(1)
 { 
     uniform_real_distribution<double> dist(0,1);
 	for( auto it=m_genes.begin() ; it < m_genes.end(); it++ ) {
